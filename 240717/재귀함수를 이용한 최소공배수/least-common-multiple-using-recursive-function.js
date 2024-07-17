@@ -29,6 +29,10 @@ rl.on('close' , () => {
         return a*b/gcd
     }
 
+    if(n === 1) {
+        return arr.pop()
+    }
+
     let a = arr.pop()
     let b = arr.pop()
 
