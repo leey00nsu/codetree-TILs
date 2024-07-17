@@ -29,24 +29,18 @@ rl.on('close' , () => {
         return a*b/gcd
     }
 
-    function getArrLCM(arr,lcm) {
-        if(arr.length === 0) return lcm
+    let a = arr.pop()
+    let b = arr.pop()
 
-        if(lcm === 0) {
-            const a = arr.pop()
-            const b = arr.pop()
-            const newLcm = getLCM(a,b)
+    let lcm = getLCM(a,b)
 
-            return getArrLCM(arr,newLcm)
-        } else {
-            const a = arr.pop()
-            const newLcm = getLCM(a,lcm)
+    while(arr.length > 0) {
+        let l = arr.pop()
 
-            return getArrLCM(arr,newLcm)
-        }
+        lcm = getLCM(l,lcm)
     }
 
-    console.log(getArrLCM(arr,0))
+    console.log(lcm)
 
 
 })
