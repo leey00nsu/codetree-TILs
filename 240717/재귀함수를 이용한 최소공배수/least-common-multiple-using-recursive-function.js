@@ -30,21 +30,19 @@ rl.on('close' , () => {
     }
 
     if(n === 1) {
-        return arr.pop()
+        console.log(arr.pop())
+    } else {
+        let a = arr.pop()
+        let b = arr.pop()
+
+        let lcm = getLCM(a,b)
+
+        while(arr.length > 0) {
+            let l = arr.pop()
+
+            lcm = getLCM(l,lcm)
+        }
+
+        console.log(lcm)
     }
-
-    let a = arr.pop()
-    let b = arr.pop()
-
-    let lcm = getLCM(a,b)
-
-    while(arr.length > 0) {
-        let l = arr.pop()
-
-        lcm = getLCM(l,lcm)
-    }
-
-    console.log(lcm)
-
-
 })
