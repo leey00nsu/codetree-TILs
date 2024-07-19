@@ -28,9 +28,9 @@ rl.on('close' , () => {
         return 0
     }
 
-    students.sort(sortStudent)
-
     const indexedStudents = students.map((el,idx) => [...el,idx+1])
+
+    indexedStudents.sort(sortStudent)
 
     for(let student of indexedStudents) {
         console.log(student.join(' '))
