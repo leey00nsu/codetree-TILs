@@ -20,7 +20,7 @@ rl.on('close' , () => {
 
     let currentDay = new Date(2024,m1+1,d1)
 
-    while(currentDay <= new Date(2024,m2+1,d2)) {
+    while(currentDay.getTime() <= new Date(2024,m2+1,d2).getTime()) {
         if(days[currentDay.getDay()] === day) {
             cnt += 1
         }
