@@ -14,22 +14,35 @@ rl.on('line', line => {
 rl.on('close' , () => {
     const [m1,d1,m2,d2] = inputs.shift().split(' ').map(Number)
     const day = inputs.shift()
-    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+    const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+    const monthDay = [31,29,31,30,31,30,31,31,30,31,30,31]
 
+    let currentMonth = m1
+    let currentDay = d1
+    let diff = 0
     let cnt = 0
 
-    let currentDay = new Date(2024,m1+1,d1)
+    while(true) {
+        const currentDays = days[diff % 7]
 
-    while(currentDay.getTime() <= new Date(2024,m2+1,d2).getTime()) {
-        if(days[currentDay.getDay()] === day) {
+        if(currentDays === day) {
             cnt += 1
         }
 
-        currentDay.setDate(currentDay.getDate() + 1)
+        if(currentMonth === m2 && currentDay === d2) break
+
+        diff += 1
+        currentDay += 1
+
+        const maxDay = monthDay[currentMonth - 1]
+
+        if(currentDay > maxDay) {
+            currentMonth += 1
+            currentDay = 1
+        }
     }
 
     console.log(cnt)
-
 
 
 })
